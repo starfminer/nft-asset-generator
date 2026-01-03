@@ -38,8 +38,8 @@ USAGE:
 
 Clone the repository:
 
-git clone https://github.com/yourusername/nft-generator.git
-cd nft-generator
+git clone https://github.com/starfminer/nft-asset-combining.git
+cd nft-asset-combining
 
 
 Prepare Your Assets:
