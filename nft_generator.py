@@ -3,7 +3,7 @@ from PIL import Image
 import json
 import os
 
-# Define paths to your assets (populated based on the folders you listed)
+# Define paths to assets (populated based on list_assets.py output)
 asset_paths = {
     'background': [
         'assets/Background/Aqua.png',
@@ -36,7 +36,7 @@ asset_paths = {
         'assets/Head/Normal.png',
         'assets/Head/Palm Leaf Hat.png',
         'assets/Head/Slick Hair.png',
-        'assets/Head/Straw Hat.png',  # Straw Hat head
+        'assets/Head/Straw Hat.png',
         'assets/Head/Visor.png',
         'assets/Head/Wavy Hair.png'
     ],
@@ -50,10 +50,10 @@ asset_paths = {
 # Define the rarity weights for each category (1 being rare, 100 being common)
 rarity_weights = {
     'background': [50, 50, 50, 50, 50, 50, 50, 50],  # All backgrounds equally common
-    'body': [50, 50, 50, 50, 50, 50, 50, 50],  # Adjusted body rarity weights
+    'body': [50, 50, 50, 50, 50, 50, 50, 50],  # All body rarity weights equally common
     'eyes': [2, 90, 20],  # Adjusted eyes rarity weights
-    'head': [50, 50, 50, 50, 50, 50, 50, 50],  # Adjusted head rarity weights
-    'accessory': [90, 5, 5]  # 90% chance of choosing None (no accessory)
+    'head': [50, 50, 50, 50, 50, 50, 50, 50],  # All head rarity weights equally common
+    'accessory': [90, 5, 5]  
 }
 
 # Define layer order for merging
@@ -78,16 +78,16 @@ def merge_assets_from_metadata(metadata):
         asset_path = metadata['asset_paths'].get(layer)
         if asset_path:
             asset_image = Image.open(asset_path)
-            base_image.paste(asset_image, (0, 0), asset_image)  # Assuming assets are transparent PNGs
+            base_image.paste(asset_image, (0, 0), asset_image) 
 
     return base_image
 
 # Function to generate metadata for the NFT
 def generate_metadata(token_id, attributes, asset_paths_dict):
     metadata = {
-        "name": f"YACHTBOT #{token_id}",
-        "description": "Botz on Yachtz",
-        "external_url": "https://yachbotz.xyz",  # project website
+        "name": f"Name #{token_id}",
+        "description": "Description",
+        "external_url": "https://example.xyz",  # project website
         "image": f"ipfs://ipfs-url/{token_id}.png",  # IPFS URL for the image will be updated later
         "attributes": attributes,
         "tokenId": token_id,
@@ -99,7 +99,7 @@ def generate_metadata(token_id, attributes, asset_paths_dict):
                 }
             ]
         },
-        "symbol": "YACHTBOTZ",
+        "symbol": "SYMBOL",
         "asset_paths": asset_paths_dict  # Store the asset paths for each layer in the metadata
     }
     return metadata
@@ -187,3 +187,4 @@ def generate_images_from_metadata(metadata_folder='output/metadata'):
 # Example usage
 generate_metadata_for_all_nfts(200)  # Step 1: Generate metadata for 200 NFTs and save to the folder
 generate_images_from_metadata()  # Step 2: Read metadata files and generate images
+
