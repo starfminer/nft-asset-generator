@@ -1,145 +1,111 @@
-NFT GENERATOR
+# NFT Asset Generator (ERC-721 Compatible)
 
-This Python script generates unique NFTs by combining various asset layers (e.g., backgrounds, bodies, heads, eyes, accessories) into one image. The script allows for customizable rarity, inclusion of different asset layers, and automatic metadata generation in Ethereum-compatible format (ERC-721 standard).
+A configurable Python-based asset generation pipeline for creating ERC-721 NFT collections.  
+This tool combines layered image assets using weighted rarity rules and outputs both images and Ethereum-compatible metadata.
 
-______________
+---
 
-FEATURES
+## Features
 
-Asset Layer Combination: Combines multiple layers (background, body, head, eyes, accessories) to generate unique NFTs.
+- Layered asset composition using ordered image stacks
+- Weighted rarity system for fine-grained trait distribution
+- Optional trait inclusion for limited-accessory NFTs
+- ERC-721 compatible metadata generation
+- Fully configurable asset paths, layers, and rarity weights
 
-Customizable Rarity: Control the probability of each asset being selected by defining rarity weights for each layer.
+---
 
-Random Accessory Inclusion: Optionally include accessories in a limited number of NFTs by specifying the probability.
+## Tech Stack
 
-Metadata Generation: Generates metadata for each NFT in the Ethereum-compatible ERC-721 format, including attributes like background, body, eyes, accessories, etc.
+- Python 3
+- Pillow (PIL)
+- JSON
 
-Flexible Asset Paths: Easily update paths for different asset categories (backgrounds, bodies, eyes, heads, accessories).
+---
 
-Adjustable Weights: Define the weights for asset rarity to control the distribution of different asset types.
+## Project Structure
 
-______________
+assets/
+├── Background/
+├── Body/
+├── Head/
+├── Eyes/
+└── Accessory/
 
-REQUIREMENTS
+output/
+├── nft_1.png
+├── nft_1.json
+└── ...
 
-To run this script, you'll need:
+yaml
+Copy code
 
-Python 3.x
+---
 
-Pillow (Python Imaging Library) for image manipulation
+## Installation
 
-Install Pillow using pip:
-
+```bash
 pip install pillow
+Usage
+Configure asset paths, rarity weights, and layer order in the script, then run:
 
-______________
+python
+Copy code
+generate_nfts(
+    total_nfts=100,
+    accessories_per_nft=5
+)
+Generated images and metadata will be written to the output/ directory.
 
-USAGE:
-
-Clone the repository:
-
-git clone https://github.com/starfminer/nft-asset-combining.git
-cd nft-asset-combining
-
-
-Prepare Your Assets:
-Organize your assets into the following folders:
-
-assets/Background/ — For background images
-
-assets/Body/ — For body images
-
-assets/Eyes/ — For eye images
-
-assets/Head/ — For head images
-
-assets/Accessory/ — For accessory images (optional, can include None for no accessory)
-
-
-
-Run the Script:
-
-Edit the script to specify the number of NFTs you want to generate and the number of NFTs that should include accessories.
-
-Ex:
-
-generate_nfts(100, accessories_per_nft=5)  # Generate 100 NFTs, with accessories included in 5 NFTs
-
-
-This will generate the images and metadata in the output/ folder.
-
-
-
-Check the Output:
-
-Generated images will be saved in the output/ folder as nft_1.png, nft_2.png, etc.
-
-Metadata files for each NFT will be saved as nft_1.json, nft_2.json, etc., containing image paths and attributes.
-
-
-
-Customization
-Asset Categories
-
-The assets for each category are defined in the asset_paths dictionary:
-
-background: List of background images (e.g., background1.png, background2.png).
-
-body: List of body images (e.g., body1.png, body2.png).
-
-eyes: List of eye images (e.g., laser.png, lazy.png).
-
-head: List of head images (e.g., beanie.png, visor.png).
-
-accessory: List of accessory images (e.g., bird.png, pipe.png). You can also include None to represent the case when no accessory is added.
-
-
+Configuration
+Asset Paths
+Assets are grouped by category and defined in the asset_paths dictionary.
+Categories can be added or removed as needed.
 
 Rarity Weights
+Trait rarity is controlled via weighted probability lists:
 
-You can adjust the rarity of each asset layer by modifying the rarity_weights dictionary. For example:
-
+python
+Copy code
 rarity_weights = {
-    'background': [50, 50, 50, 50, 50, 50, 50, 50],  # Equal chance for each background
-    'body': [80, 70, 70, 100, 60, 90, 80, 50],  # Some body types are rarer
-    'eyes': [2, 90, 50],  # One eyes type is very rare
-    'head': [60, 50, 100, 40, 80, 70, 90, 50],  # Some heads are rarer
-    'accessory': [95, 2, 2]  # 95% chance of choosing None (no accessory)
+    "background": [50, 50, 50, 50],
+    "body": [80, 70, 100],
+    "eyes": [2, 90, 50],
+    "head": [60, 40, 80],
+    "accessory": [95, 2, 2]
 }
+Higher weights increase the likelihood of selection.
 
+Layer Order
+python
+Copy code
+layer_order = [
+    "background",
+    "body",
+    "head",
+    "eyes",
+    "accessory"
+]
+Layers are composited from bottom to top.
 
+Output
+Each generated NFT includes:
 
-This configuration controls how likely each asset is to be chosen. For instance, accessory: [95, 2, 2] means that there is a 95% chance that no accessory will be chosen, and a 2% chance for each accessory type.
+A composite PNG image
 
+A corresponding JSON metadata file compatible with ERC-721 standards
 
+Design Notes
+Assets are composited deterministically to ensure reproducible output
 
-Asset Layer Control
+Rarity weights allow precise control of trait distribution
 
-The layer_order list defines the order in which the assets are stacked. By default, the order is:
-
-layer_order = ['background', 'body', 'head', 'eyes', 'accessory']
-
-
-You can adjust this order or remove layers depending on your requirements.
-
-Adjusting the Number of Accessories
-
-In the generate_nfts function, you can control how many NFTs will have accessories:
-
-generate_nfts(100, accessories_per_nft=5)  # 100 NFTs, 5 with accessories
-
-
-This will include accessories in 5 out of 100 NFTs. The rest will not have any accessories.
-
-
-______________
-
+Metadata follows ERC-721 conventions for marketplace compatibility
 
 License
+MIT License
 
-This project is licensed under the MIT License - see the LICENSE
- file for details.
+yaml
+Copy code
 
-Feel free to modify the repository URL in the Clone the repository section and make any other custom adjustments.
-
-Let me know if you'd like additional modifications or have any questions!
+---
