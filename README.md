@@ -63,7 +63,7 @@ asset_paths = {
 
 Categories can be added or removed as needed.
 
----
+ 
 
 ### Rarity Weights
 
@@ -79,7 +79,7 @@ rarity_weights = {
 
 Higher weights increase the likelihood of selection.
 
----
+ 
 
 ### Layer Order
 
@@ -95,7 +95,7 @@ layer_order = [
 
 Adjust this order to fit your asset design.
 
----
+ 
 
 ### Output
 
@@ -107,8 +107,9 @@ A composite PNG image
 
 A corresponding JSON metadata file compatible with ERC-721 standards
 
+ 
 
-## Design Notes
+### Design Notes
 
 Weighted rarity allows precise control over trait distribution
 
@@ -116,7 +117,8 @@ Metadata follows ERC-721 conventions for marketplace compatibility
 
 Designed for extensibility and reuse across multiple collections
 
+ 
 
-## License
+### License
 
 MIT License
