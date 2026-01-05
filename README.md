@@ -35,6 +35,8 @@ pip install pillow
 
 ## Usage
 
+This script is intended for offline asset generation prior to contract deployment.
+
 Configure asset paths, rarity weights, and layer order in the script, then run:
 
 ```bash
@@ -44,7 +46,7 @@ generate_nfts(
 )
 ```
 
-This example would generate a run of 100 randomized NFTs with 5 NFTs in the run containing accessories.
+This example generates 100 randomized NFTs, with accessories included in 5 of them.
 
 Generated images and metadata will be written to the output/ directory.
 
@@ -113,9 +115,9 @@ Generated images and metadata will be written to the output/ directory.
 
 Each generated NFT includes:
 
-A composite PNG image
+- A composite PNG image
 
-A corresponding JSON metadata file compatible with ERC-721 standards
+- A corresponding JSON metadata file compatible with ERC-721 standards
 
  
 
