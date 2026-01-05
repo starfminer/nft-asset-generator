@@ -55,6 +55,7 @@ Generated images and metadata will be written to the output/ directory.
 
 Assets are grouped by category and defined in the asset_paths dictionary:
 
+```bash
 asset_paths = {
     "background": [...],
     "body": [...],
@@ -62,6 +63,7 @@ asset_paths = {
     "eyes": [...],
     "accessory": [...]
 }
+```
 
 Categories can be added or removed as needed.
 
@@ -71,6 +73,8 @@ Categories can be added or removed as needed.
 
 Trait rarity is controlled via weighted probability lists:
 
+
+```bash
 rarity_weights = {
     "background": [50, 50, 50, 50],
     "body": [80, 70, 100],
@@ -78,6 +82,8 @@ rarity_weights = {
     "head": [60, 40, 80],
     "accessory": [95, 2, 2]
 }
+```
+
 
 Higher weights increase the likelihood of selection.
 
@@ -87,6 +93,7 @@ Higher weights increase the likelihood of selection.
 
 Layers are composited from bottom to top:
 
+```bash
 layer_order = [
     "background",
     "body",
@@ -94,6 +101,7 @@ layer_order = [
     "eyes",
     "accessory"
 ]
+```
 
 Adjust this order to fit your asset design.
 
