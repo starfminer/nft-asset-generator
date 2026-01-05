@@ -37,10 +37,12 @@ pip install pillow
 
 Configure asset paths, rarity weights, and layer order in the script, then run:
 
+```bash
 generate_nfts(
     total_nfts=100,
     accessories_per_nft=5
 )
+```
 
 This example would generate a run of 100 randomized NFTs with 5 NFTs in the run containing accessories.
 
