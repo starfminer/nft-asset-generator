@@ -1,6 +1,6 @@
 import os
 
-# Define the paths to your asset folders
+# Define the paths to asset folders
 asset_folders = [
     'assets/Accessory',
     'assets/Background',
@@ -27,3 +27,4 @@ for folder, files in asset_files.items():
     print(f"Files in {folder}:")
     for file in files:
         print(f"  {file}")
+
