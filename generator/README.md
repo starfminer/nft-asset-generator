@@ -47,6 +47,7 @@ asset_paths = {
     "accessory": [...]
 }
 ```
+Use list_assets.py to print a complete asset list.
 
 Categories can be added or removed as needed.
 
