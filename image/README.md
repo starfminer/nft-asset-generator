@@ -21,11 +21,7 @@ Batch tools for processing NFT images without altering visual quality.
 
 ## Usage
 
-Run any tool from the folder containing your NFT images:
-
-```bash
-python C:/Users/<your user>/nft-asset-generator/image/<script>.py
-```
+Run any tool from the folder containing your NFT images.
 
 ### License
 
