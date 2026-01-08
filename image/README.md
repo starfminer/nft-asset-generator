@@ -5,7 +5,7 @@ Batch tools for processing NFT images without altering visual quality.
 ## Included Tools
 
 ### `resize_pngs.py`
-- Scales PNG images to 50% of original dimensions
+- Scales PNG images
 - Preserves transparency
 - Outputs to `resized/`
 
@@ -15,7 +15,7 @@ Batch tools for processing NFT images without altering visual quality.
 - Outputs to `webp/`
 
 ### `resize_webp.py`
-- Resizes WebP images to **512 x 512**
+- Resizes WebP images
 - Lossless output
 - Outputs to `resized_webp/`
 
@@ -25,3 +25,8 @@ Run any tool from the folder containing your NFT images:
 
 ```bash
 python C:/Users/<your user>/nft-asset-generator/image/<script>.py
+```
+
+### License
+
+MIT License
